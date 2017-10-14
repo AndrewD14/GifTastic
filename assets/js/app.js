@@ -57,7 +57,7 @@ function generatePictures(response){
 		newImg.attr("src", imageObjects[i].images.fixed_height_small_still.url);
 		newImg.attr("index", i);
 		newImg.attr("state", "still");
-		newImg.on("click", switchStates);
+		newImg.addClass("clickImg");
 
 		newGif.append(newImg);
 
@@ -77,7 +77,7 @@ function displayButtons(){
 		var newBtn = $("<button>");
 		newBtn.attr("search", topic[i]);
 		newBtn.html(topic[i]);
-		newBtn.on("click", searchForGif);
+		newBtn.addClass("displayButtons");
 
 		$("#buttons").append(newBtn);
 	}
@@ -101,3 +101,4 @@ function switchStates(){
 		currentEle.attr("state", "still");
 	}
 }
+
