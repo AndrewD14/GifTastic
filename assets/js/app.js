@@ -1,6 +1,6 @@
 //global variables
 var topic = ["Super Sayian", "Final Fantasy"];
-
+var imageObjects = {};
 
 //function to grab data from the api
 function getGif(search){
@@ -21,7 +21,6 @@ function getGif(search){
 
 	if(search != null && search != "")
 		inputs.q = search;
-	inputs.q = "bears";
 
 	if(maxRatingAllowed != null && maxRatingAllowed != "")
 		inputs.rating = maxRatingAllowed;
@@ -32,7 +31,8 @@ function getGif(search){
 		url: queryURL,
 		method: "GET",
 		data: inputs
-	}).done(generatePictures)
+	})
+	.done(generatePictures)
 	.fail(apiError)
 	.always(function(response){
 		console.log(this.url)
@@ -43,7 +43,26 @@ function getGif(search){
 function generatePictures(response){
 	console.log(response);
 
-	
+	//stores the images
+	imageObjects = response.data;
+
+	//clear the current gifs
+	$("#giphy").empty();
+
+	//loops through the response and creates elements to display on the page
+	for(i in imageObjects){
+		var newGif = $("<div>");
+
+		var newImg = $("<img>");
+		newImg.attr("src", imageObjects[i].images.fixed_height_small_still.url);
+		newImg.attr("index", i);
+		newImg.attr("state", "still");
+		newImg.on("click", switchStates);
+
+		newGif.append(newImg);
+
+		$("#giphy").append(newGif);
+	}
 }
 
 //displays the error if the api calls fails
@@ -67,4 +86,18 @@ function displayButtons(){
 //onclick function to pass the search term and call the api
 function searchForGif(){
 	getGif($(this).attr("search"));
+}
+
+//onclick function to swap between animated and still
+function switchStates(){
+	var currentEle = $(this);
+
+	if(currentEle.attr("state") == "still"){
+		currentEle.attr("src", imageObjects[currentEle.attr("index")].images.fixed_height_small.url);
+		currentEle.attr("state", "animated");
+	}
+	else {
+		currentEle.attr("src", imageObjects[currentEle.attr("index")].images.fixed_height_small_still.url);
+		currentEle.attr("state", "still");
+	}
 }
