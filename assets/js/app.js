@@ -53,12 +53,18 @@ function generatePictures(response){
 	for(i in imageObjects){
 		var newGif = $("<div>");
 
+		//creates the rating p to append
+		var newPara = $("<p>");
+		newPara.html("<b>Rating:<b> "+imageObjects[i].rating);
+
 		var newImg = $("<img>");
 		newImg.attr("src", imageObjects[i].images.fixed_height_small_still.url);
 		newImg.attr("index", i);
 		newImg.attr("state", "still");
 		newImg.addClass("clickImg");
 
+		//appends the elements
+		newGif.append(newPara);
 		newGif.append(newImg);
 
 		$("#giphy").append(newGif);
