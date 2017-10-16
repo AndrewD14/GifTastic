@@ -11,13 +11,22 @@
 		<div id="buttons"></div>
 		<div id="giphy"></div>
 
+		<form>
+			<label>Add in a Term to Search</label>
+			<input type="text" name="keyWord" />
+			<button id="submit" type="submit">Submit</button>
+		</form>
+
 		<script type="text/javascript">
 			$(document).ready(function(){
 				displayButtons();
 
-			//adds the click function to all elements that match in the body, even those added dynamically
-			$(document.body).on("click", ".clickImg", switchStates);
-			$(document.body).on("click", ".displayButtons", searchForGif);
+				//adds the click function to all elements that match in the body, even those added dynamically
+				$(document.body).on("click", ".clickImg", switchStates);
+				$(document.body).on("click", ".displayButtons", searchForGif);
+
+				//adds the click event to the submit button
+				$("#submit").on("click", addSearch);
 			});
 		</script>
 	</body>

@@ -1,5 +1,5 @@
 //global variables
-var topic = ["Super Sayian", "Final Fantasy"];
+var topic = ["Super Sayian", "Final Fantasy", "Zelda", "Link", "Cowboy Beebop"];
 var imageObjects = {};
 
 //function to grab data from the api
@@ -73,6 +73,10 @@ function apiError(response){
 
 //generates the buttons and populates it on the page
 function displayButtons(){
+	//clears the buttons to prevent duplicating the list
+	$("#buttons").empty();
+
+	//generates the buttons with the keyWords from the array
 	for(i in topic){
 		var newBtn = $("<button>");
 		newBtn.attr("search", topic[i]);
@@ -102,3 +106,16 @@ function switchStates(){
 	}
 }
 
+//function to handle the submit request
+function addSearch(){
+	//prevents the submit type button from refreshing the page
+	event.preventDefault();
+
+	topic.push($("input[name='keyWord']").val().trim());
+
+	//clears the text in the box
+	$("input[name='keyWord']").val("");
+
+	//calls to redisplay the buttons
+	displayButtons();
+}
