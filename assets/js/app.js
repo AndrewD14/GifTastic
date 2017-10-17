@@ -63,6 +63,9 @@ function generatePictures(response){
 		newImg.attr("state", "still");
 		newImg.addClass("clickImg");
 
+		//boostrap classes
+		newGif.addClass("col-4");
+
 		//appends the elements
 		newGif.append(newPara);
 		newGif.append(newImg);
@@ -88,6 +91,10 @@ function displayButtons(){
 		newBtn.attr("search", topic[i]);
 		newBtn.html(topic[i]);
 		newBtn.addClass("displayButtons");
+
+		//boostrap classes
+		newBtn.addClass("btn");
+		newBtn.addClass("btn-outline-primary");
 
 		$("#buttons").append(newBtn);
 	}

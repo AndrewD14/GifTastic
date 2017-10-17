@@ -3,22 +3,41 @@
 	<head>
 	    <meta charset="utf-8">
 	    <title>GifTastic</title>
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 	    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	    <script type= "text/javascript" src= "assets/js/app.js"></script>
 	</head>
 	<body>
-		<div id="error"></div>
-		<div id="buttons"></div>
-		<div id="giphy"></div>
-
-		<form>
-			<label>Add in a Term to Search</label>
-			<input type="text" name="keyWord" />
-			<button id="submit" type="submit">Submit</button>
-		</form>
+		<div class="jumbotron">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col">
+						<div id="error"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div id="buttons"></div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<div id="giphy" class="row"></div>
+					</div>
+					<div class="col-2">
+						<form>
+							<div class="form-group">
+								<label>Add in a Term to Search</label>
+								<input class="form-control" type="text" name="keyWord" />
+							</div>
+							<button class="btn btn-primary" id="submit" type="submit">Submit</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<script type="text/javascript">
 			$(document).ready(function(){
+				//calls the functions to render the buttons
 				displayButtons();
 
 				//adds the click function to all elements that match in the body, even those added dynamically
