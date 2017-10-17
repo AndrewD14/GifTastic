@@ -34,15 +34,11 @@ function getGif(search){
 	})
 	.done(generatePictures)
 	.fail(apiError)
-	.always(function(response){
-		console.log(this.url)
-	});
+	;
 }
 
 //processes the response from the api
 function generatePictures(response){
-	console.log(response);
-
 	//stores the images
 	imageObjects = response.data;
 
@@ -78,6 +74,7 @@ function generatePictures(response){
 function apiError(response){
 	var responseText = $.parseJSON(response.responseText);
 	$("#error").html("There was an error calling the Giphy API.<br>Status: "+responseText.meta.status+"<br>"+responseText.meta.msg);
+	$("#error").css("display", "block");
 }
 
 //generates the buttons and populates it on the page
@@ -102,6 +99,10 @@ function displayButtons(){
 
 //onclick function to pass the search term and call the api
 function searchForGif(){
+	//hides the error box and clears it at the start of the call
+	$("#error").css("display", "none");
+	$("#error").html("");
+
 	getGif($(this).attr("search"));
 }
 
