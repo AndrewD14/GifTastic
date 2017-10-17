@@ -49,6 +49,7 @@ function generatePictures(response){
 	//loops through the response and creates elements to display on the page
 	for(i in imageObjects){
 		var newGif = $("<div>");
+		newGif.addClass("gif");
 
 		//creates the rating p to append
 		var newPara = $("<p>");
@@ -61,7 +62,7 @@ function generatePictures(response){
 		newImg.addClass("clickImg");
 
 		//boostrap classes
-		newGif.addClass("col-4");
+		newGif.addClass("float-left");
 
 		//appends the elements
 		newGif.append(newPara);
