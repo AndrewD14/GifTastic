@@ -1,5 +1,6 @@
 //global variables
-var topic = ["Super Sayian", "Final Fantasy", "Zelda", "Link", "Cowboy Beebop"];
+var topic = ["Super Sayian", "Final Fantasy", "Zelda", "Link", "Cowboy Beebop", "Trigun", "Dragon Ball Z", "Goku", "Vegeta", "Dragon Ball Super", "Cloud Strife", "Tifa Lockhart",
+			 "Horizon Zero Dawn", "Sephiroth"];
 var imageObjects = {};
 
 //function to grab data from the api
@@ -125,7 +126,11 @@ function addSearch(){
 	//prevents the submit type button from refreshing the page
 	event.preventDefault();
 
-	topic.push($("input[name='keyWord']").val().trim());
+	//checks to make sure the box is not empty
+	var term = $("input[name='keyWord']").val().trim();
+
+	if(term != "")
+		topic.push($("input[name='keyWord']").val().trim());
 
 	//clears the text in the box
 	$("input[name='keyWord']").val("");
