@@ -1,5 +1,5 @@
 //global variables
-var topic = ["Super Sayian", "Final Fantasy", "Zelda", "Link", "Cowboy Beebop", "Trigun", "Dragon Ball Z", "Goku", "Vegeta", "Dragon Ball Super", "Cloud Strife", "Tifa Lockhart",
+var topic = ["Super Saiyan", "Final Fantasy", "Zelda", "Link", "Cowboy Bebop", "Trigun", "Dragon Ball Z", "Goku", "Vegeta", "Dragon Ball Super", "Cloud Strife", "Tifa Lockhart",
 			 "Horizon Zero Dawn", "Sephiroth"];
 var imageObjects = [];
 var limits = 10;
